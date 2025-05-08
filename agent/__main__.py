@@ -1,8 +1,17 @@
 from fastapi import FastAPI, Request
-
+from fastapi.middleware.cors import CORSMiddleware
 from agent.helpers import get_note_from_db, save_note, search_from_query
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get("/")
 def read_root() -> dict[str, str]:

@@ -70,3 +70,6 @@ def search_from_query(note: str) -> str:
         return result
     else:
         return "couldn't find any relevant note"
+
+if __name__ == "__main__":
+    save_note("this is my cool note 2")
